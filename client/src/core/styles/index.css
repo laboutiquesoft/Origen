@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+/* 1. Importación modular de estilos */
+@import "../../core/styles/variables.css";
+@import "../../shared/components/spinner/spinner.css";
+@import "../../shared/components/toast/toast.css";
+
+/* 2. Mapeo a Tailwind CSS v4 (@theme) */
+@theme {
+
+  --color-main: var(--main-color);
+  --color-secondary-blue: var(--secondary-color);
+  --color-accent: var(--accent-color);
+
+  --color-page-primary: var(--bg-page-primary);
+  --color-page-secondary: var(--bg-page-secondary);
+  
+  --color-brand-light: var(--color-brand-light);
+  --color-brand-dark: var(--color-brand-dark);
+  
+
+  --color-modal-danger-text: var(--modal-danger-text);
+  --color-modal-warning-text: var(--modal-warning-text);
+  --color-modal-success-text: var(--modal-success-text);
+  --color-modal-info-text: var(--modal-info-text);
+
+  --font-title: var(--font-title);
+  --font-body: var(--font-body);
+}
+
+/* Keyframes Globales */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+
+/* 3. Clases de Utilidad de Capa */
+@layer utilities {
+  .bg-support {
+    background-image: var(--support-gradient);
+  }
+
+  .bg-support-hover {
+    background-image: var(--support-gradient-hover);
+  }
+
+  .brand-font {
+    font-family: var(--font-title);
+  }
+
+  .header-surface {
+    background-color: white;
+  }
+
+  .bg-main-gradient {
+    background-image: var(--main-gradient);
+  }
+
+  .bg-main-gradient-hover {
+    background-image: var(--main-gradient-hover);
+  }
+
+  /* Estilos base reutilizables para el Main Button */
+  .btn-main {
+    background-image: var(--main-gradient);
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+    color: var(--text-secondary-color);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(26, 30, 82, 0.25);
+  }
+
+  .btn-main:hover:not(:disabled) {
+    animation-duration: 1s;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(26, 30, 82, 0.35);
+  }
+
+  .btn-main:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(26, 30, 82, 0.2);
+  }
+
+  /* Headers de Modales */
+  .modal-header-danger {
+    background-image: var(--modal-header-danger-bg);
+    border-bottom: 1px solid var(--modal-danger-border);
+  }
+
+  .modal-header-warning {
+    background-image: var(--modal-header-warning-bg);
+    border-bottom: 1px solid var(--modal-warning-border);
+  }
+
+  .modal-header-success {
+    background-image: var(--modal-header-success-bg);
+    border-bottom: 1px solid var(--modal-success-border);
+  }
+
+  .modal-header-info {
+    background-image: var(--modal-header-info-bg);
+    border-bottom: 1px solid var(--modal-info-border);
+  }
+}
+
+/* ==========================================================================
+   COMPONENTES CON GRADIENTE DINÁMICO
+   ========================================================================== */
+
+/* 1. Botón Principal Animado */
+.gradient-button {
+  background-image: var(--main-gradient);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  color: var(--text-secondary-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gradient-button:hover {
+  animation-duration: 1s;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 2. Texto con Gradiente Dinámico */
+.gradient-text {
+  background-image: var(--main-gradient);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 3. Botón Secundario (Borde animado continuo que se llena al hover) */
+.secondary-gradient-button {
+  background-color: var(--bg-page-primary);
+  color: var(--main-color);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-clip: padding-box;
+}
+
+.secondary-gradient-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background-image: var(--main-gradient);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+
+  /* MÁSCARA RECORTE: Se usan valores sólidos (#000) porque la máscara evalúa opacidad, no color CSS */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.secondary-gradient-button:hover {
+  color: var(--bg-page-primary);
+  background-image: var(--main-gradient);
+  background-size: 200% 200%;
+  animation: gradient-shift 1s ease infinite;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.secondary-gradient-button:hover::before {
+  opacity: 0;
+}
+
+/* ==========================================================================
+   RESETS Y ESTILOS GENERALES
+   ========================================================================== */
+html,
+body {
+  
+  color: var(--text-main);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  line-height: 1.7;
+  width: 100%;
+  min-height: 100vh;
+}
+
+h1, h3, h4, h5, h6, .brand-font {
+  font-family: var(--font-title) !important;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-family: var(--font-title) !important;  
+  font-weight: 600;    
+}
+
+.text-brand {
+  color: var(--color-brand-dark);
+}
+
+.border-brand {
+  border-color: var(--color-brand-light);
+}
+
+.fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}

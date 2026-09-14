@@ -1,0 +1,119 @@
+.spinner {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle,
+    rgba(224, 161, 42, 0.08) 0%,
+    rgba(255, 255, 255, 0.95) 50%
+  );
+  z-index: 9999;
+}
+
+.circle {    
+  position: relative;
+  height: 350px;
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Aura exterior girando (Reloj - 4s) */
+.circle::before {
+  content: '';
+  position: absolute;
+  height: 400px;
+  width: 400px;
+  border-radius: 50%;
+  background: conic-gradient(var(--secondary-color), var(--accent-color), var(--main-color));
+  animation: spin 4s linear infinite;
+  filter: blur(50px);
+  opacity: 0.35;
+}
+
+.circle-2 {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 10px 40px rgba(26, 30, 82, 0.15);    
+}
+
+/* Anillo principal rápido (Reloj - 1.2s) */
+.circle-2::before {
+  content: '';
+  position: absolute;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid transparent;
+  border-top: 5px solid var(--main-color);
+  border-bottom: 5px solid var(--accent-color);
+  animation: spinfast 1.2s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(224, 161, 42, 0.5));
+}
+
+/* Anillo interno brillante con Giro Reverso (Contra-reloj - 2s) */
+.circle-2::after {
+  content: '';
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(var(--main-color), var(--secondary-color), var(--accent-color));
+  animation: spinReverse 2s linear infinite;
+  filter: blur(15px);
+  opacity: 0.6;
+}
+
+/* Las 8 líneas girando como un vórtice contra-reloj rápido */
+.line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 170px;
+  height: 170px;
+  border-radius: 40%;
+  border: 2px solid transparent;
+  border-top-color: var(--accent-color);
+  border-left-color: var(--secondary-color);
+  transform: translate(-50%, -50%) rotate(calc(var(--i) * 45deg));
+  animation: spinReverseLines 2.5s linear infinite;
+}
+
+/* --- KEYFRAMES --- */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinfast {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  from { transform: translate(-50%, -50%) rotate(360deg); }
+  to { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+@keyframes spinReverseLines {
+  from { 
+    transform: translate(-50%, -50%) rotate(calc(var(--i) * 45deg)); 
+  }
+  to { 
+    transform: translate(-50%, -50%) rotate(calc(var(--i) * 45deg - 360deg)); 
+  }
+}

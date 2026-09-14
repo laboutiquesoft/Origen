@@ -1,0 +1,144 @@
+:root {
+  /* ==========================================================================
+     1. PALETA DE MARCA Y COLORES PRINCIPALES
+     ========================================================================== */
+  --main-color: #1a1e52;
+  --secondary-color: #3168ac;
+  --accent-color: #e0a12a;
+
+  --support-light: #02adbd;
+  --support-dark: #0288bd;
+
+  --white: #ffffff;
+
+  --main-gradient: linear-gradient(
+    90deg,
+    var(--main-color) 0%,
+    var(--secondary-color) 50%,
+    var(--main-color) 100%
+  );
+
+  --main-gradient-hover: linear-gradient(
+    90deg,
+    #111438 0%,
+    #21286e 50%,
+    var(--main-color) 100%
+  );
+
+    --support-gradient: linear-gradient(
+    90deg,
+    var(--support-light) 0%,
+    var(--support-dark) 50%,
+    var(--support-light) 100%
+  );
+
+
+  /* ==========================================================================
+     2. SUPERFICIES, TIPOGRAFÍA Y TEXTO GENERAL
+     ========================================================================== */
+  --bg-page-primary: #ffffff;
+  --bg-page-secondary: #f8fafc;
+  --text-main-color: #111827;
+  --text-secondary-color: #ffffff;
+  --text-third-color: var(--main-color);
+  --text-muted: #4b5563;
+  --border-color: #e5e7eb;
+
+  --font-title: "Cinzel", serif, sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+
+  /* ==========================================================================
+     HEADER Y NAVEGACIÓN
+     ========================================================================== */
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --header-border: rgba(226, 232, 240, 0.8);
+  --header-blur: 12px;
+  --header-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+
+  /* ==========================================================================
+     3. MODALES DE CONFIRMACIÓN
+     ========================================================================== */
+  --modal-danger-from: rgba(244, 63, 94, 0.15);
+  --modal-danger-via: rgba(254, 226, 226, 0.5);
+  --modal-danger-to: rgba(255, 241, 242, 0.2);
+  --modal-danger-border: rgba(254, 205, 205, 0.6);
+  --modal-danger-text: #be123c;
+
+  --modal-warning-from: rgba(245, 158, 11, 0.15);
+  --modal-warning-via: rgba(254, 243, 199, 0.5);
+  --modal-warning-to: rgba(254, 252, 232, 0.2);
+  --modal-warning-border: rgba(253, 230, 138, 0.6);
+  --modal-warning-text: #b45309;
+
+  --modal-success-from: rgba(16, 185, 129, 0.15);
+  --modal-success-via: rgba(209, 250, 229, 0.5);
+  --modal-success-to: rgba(236, 253, 245, 0.2);
+  --modal-success-border: rgba(167, 243, 208, 0.6);
+  --modal-success-text: #047857;
+
+  --modal-info-from: rgba(6, 182, 212, 0.15);
+  --modal-info-via: rgba(224, 242, 254, 0.5);
+  --modal-info-to: rgba(236, 254, 255, 0.2);
+  --modal-info-border: rgba(165, 243, 252, 0.6);
+  --modal-info-text: #0e7490;
+
+  --modal-backdrop: rgba(15, 23, 42, 0.4);
+  --modal-backdrop-blur: 4px;
+
+  --modal-header-danger-bg: linear-gradient(
+    to right,
+    var(--modal-danger-from),
+    var(--modal-danger-via),
+    var(--modal-danger-to)
+  );
+  --modal-header-warning-bg: linear-gradient(
+    to right,
+    var(--modal-warning-from),
+    var(--modal-warning-via),
+    var(--modal-warning-to)
+  );
+  --modal-header-success-bg: linear-gradient(
+    to right,
+    var(--modal-success-from),
+    var(--modal-success-via),
+    var(--modal-success-to)
+  );
+  --modal-header-info-bg: linear-gradient(
+    to right,
+    var(--modal-info-from),
+    var(--modal-info-via),
+    var(--modal-info-to)
+  );
+
+  /* ==========================================================================
+     4. NOTIFICACIONES TOAST
+     ========================================================================== */
+  --toast-bg-success: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  --toast-bg-error: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+  --toast-bg-warning: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  --toast-bg-info: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+
+  /* ==========================================================================
+     4. STATS CARD GRADIESNTS
+     ========================================================================== */
+  --gradient-purple-indigo: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-pink-rose: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-emerald-teal: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  --gradient-sky-blue: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+
+  /* 12 Nuevos Gradientes */
+  --gradient-amber-orange: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  --gradient-deep-blue-cyan: linear-gradient(135deg, #021b79 0%, #0575e6 100%);
+  --gradient-violet-fuchsia: linear-gradient(135deg, #7f00ff 0%, #e100ff 100%);
+  --gradient-coral-sunset: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+  --gradient-mint-green: linear-gradient(135deg, #0ba360 0%, #3cba92 100%);
+  --gradient-ocean-blue: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+  --gradient-sunset-red: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+  --gradient-royal-purple: linear-gradient(135deg, #654ea3 0%, #eaafc8 100%);
+  --gradient-warm-peach: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  --gradient-electric-indigo: linear-gradient(135deg, #3a1c71 0%, #d76d77 100%);
+  --gradient-dark-midnight: linear-gradient(135deg, #232526 0%, #414345 100%);
+  --gradient-golden-yellow: linear-gradient(135deg, #ffe000 0%, #799f0c 100%);
+     
+}

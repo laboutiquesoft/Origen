@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  title: Catalogue Microservice API
+  description: Documentación de la API para la gestión de catálogos y productos.
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3002
+    description: Servidor de desarrollo
+
+paths:
+  /api/catalogues:
+    get:
+      summary: Obtener lista de catálogos
+      tags:
+        - Catalogues
+      responses:
+        '200':
+          description: Lista de catálogos recuperada exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Catalogue'
+
+    post:
+      summary: Crear un nuevo catálogo
+      tags:
+        - Catalogues
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCatalogueInput'
+      responses:
+        '201':
+          description: Catálogo creado exitosamente
+        '401':
+          description: No autorizado (Token inválido o no proporcionado)
+
+  /api/catalogues/{id}:
+    get:
+      summary: Obtener un catálogo por ID
+      tags:
+        - Catalogues
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Catálogo encontrado
+        '404':
+          description: Catálogo no encontrado
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Catalogue:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          example: "Colección Verano"
+        description:
+          type: string
+          example: "Catálogo de ropa ligera"
+        isActive:
+          type: boolean
+          example: true
+
+    CreateCatalogueInput:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: "Colección Otoño"
+        description:
+          type: string
+          example: "Catálogo de temporada"

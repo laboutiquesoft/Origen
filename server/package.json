@@ -1,0 +1,10 @@
+{
+  "name": "origen",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --parallel dev",
+    "dev:auth": "pnpm --filter auth-service dev",
+    "dev:catalogues": "pnpm --filter catalogue-service dev"
+  }
+}
