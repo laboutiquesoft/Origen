@@ -29,7 +29,11 @@ class AuthController {
                 },
             });
         } catch (error) {
-            next(error);
+            console.error('🔥 ERROR FATAL EN LOGIN:', error);
+            return res.status(500).json({ 
+            message: 'Error interno del servidor', 
+            error: error.message 
+    });
         }
     }
 
