@@ -5,7 +5,7 @@ import { asyncHandler, AppError } from '@origen/common';
 class MedicalProcedureController {
 
     /**
-     * @route POST /api/medical-procedures
+     * @route POST /api/medical-proceduress
      * @desc Crea un nuevo procedimiento médico.
      * @access Private (Ej. rol de médico, enfermera, etc.)
      */
@@ -69,6 +69,9 @@ class MedicalProcedureController {
             data
         });
     });
+
+
+    getMedicalProcedures = 
 
     /**
      * @route PUT /api/medical-procedures/:id
