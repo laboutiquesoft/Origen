@@ -4,8 +4,14 @@ import User from "../entities/user.js";
 class UserRepository {
 
     async findByEmail(email) {
+        // 🟢 DIAGNÓSTICO DE CONEXIÓN
+        console.log("🔍 [UserRepository] Intentando conectar a la Base de Datos...");
+        console.log("🔍 DATABASE_URL activa:", process.env.DATABASE_URL);
+        console.log("🔍 Pool Options Host:", pool.options?.host || pool.options?.connectionString);
+
         const client = await pool.connect();
         try {
+            console.log("✅ [UserRepository] Conexión establecida con éxito!");
             const userResult = await client.query(
                 `SELECT * FROM users WHERE email = $1`,
                 [email]
@@ -13,6 +19,9 @@ class UserRepository {
 
             if (!userResult.rows.length) return null;
             return await this._getUserWithRelations(client, userResult.rows[0]);
+        } catch (error) {
+            console.error("🔥 [UserRepository] Error en la consulta o conexión:", error);
+            throw error;
         } finally {
             client.release();
         }
