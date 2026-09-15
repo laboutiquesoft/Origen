@@ -69,6 +69,9 @@ importers:
       '@eslint/js':
         specifier: ^10.0.1
         version: 10.0.1(eslint@10.8.1(jiti@2.7.0))
+      '@rolldown/binding-linux-x64-gnu':
+        specifier: ^1.2.8
+        version: 1.2.8
       '@types/node':
         specifier: ^24.13.3
         version: 24.13.3
@@ -495,6 +498,12 @@ packages:
     cpu: [x64]
     os: [linux]
     libc: [glibc]
+
+  '@rolldown/binding-linux-x64-gnu@1.2.8':
+    resolution: {integrity: sha512-H9tRr5ibfXFVLxbPOseVewewFpl28zcEdjRDt2FTUZU7odxP0gEv1ki4/kGmcGOh78oRwZuuQllGLZ9zTJp84g==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    cpu: [x64]
+    os: [linux]
 
   '@rolldown/binding-linux-x64-musl@1.2.5':
     resolution: {integrity: sha512-mY8AP0/ichsbhAxGnLa3d3+MwV0EfgrPND2bplI3Ym8T6R2pJ0N87bvrKVwNXmdy3jnr6eQBecdqx/HMknBmpA==}
@@ -1993,6 +2002,8 @@ snapshots:
 
   '@rolldown/binding-linux-x64-gnu@1.2.5':
     optional: true
+
+  '@rolldown/binding-linux-x64-gnu@1.2.8': {}
 
   '@rolldown/binding-linux-x64-musl@1.2.5':
     optional: true
