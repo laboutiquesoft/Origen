@@ -31,6 +31,8 @@ const banner = fs.readFileSync(bannerPath, 'utf8');
 
 const app = express();
 
+app.set('trust proxy', 1);
+
 const PORT = config.PORT || 3000;
 
 // 1. Core Security & Logging
