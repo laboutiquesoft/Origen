@@ -5,7 +5,7 @@ import { asyncHandler, AppError } from '@origen/common';
 class MedicalProcedureController {
 
     /**
-     * @route POST /api/medical-proceduress
+     * @route POST /api/medical-procedures
      * @desc Crea un nuevo procedimiento médico.
      * @access Private (Ej. rol de médico, enfermera, etc.)
      */
@@ -70,9 +70,6 @@ class MedicalProcedureController {
         });
     });
 
-
-    getMedicalProcedures = 
-
     /**
      * @route PUT /api/medical-procedures/:id
      * @route PATCH /api/medical-procedures/:id
@@ -92,11 +89,11 @@ class MedicalProcedureController {
         // delete updateData.doctor_id;
         // delete updateData.procedure_date;
 
-        const updatedMedicalProcedure = await MedicalProcedureService.updateMedicalProcedure(id, updateData);
+        const result = await MedicalProcedureService.updateMedicalProcedure(id, updateData);
 
         res.status(200).json({
             status: 'success',
-            data: updatedMedicalProcedure
+            data: result
         });
     });
 
